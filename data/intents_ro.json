@@ -1,0 +1,14 @@
+{
+  "greeting": {
+    "examples": ["salut", "buna", "hey", "salutare"],
+    "response": "Salut! Cum te pot ajuta azi?"
+  },
+  "hours": {
+    "examples": ["program", "orar", "cand sunteti deschisi"],
+    "response": "Programul nostru este 09:00 - 18:00, Luni-Vineri."
+  },
+  "support": {
+    "examples": ["ajutor", "am o problema", "nu merge"],
+    "response": "Imi pare rau. Spune-mi pasii si incercam sa rezolvam."
+  }
+}

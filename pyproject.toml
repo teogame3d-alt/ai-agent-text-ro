@@ -1,0 +1,34 @@
+[project]
+name = "ai-agent-text-ro"
+version = "0.1.0"
+description = "Romanian text agent with persistence, tests, and optional TTS."
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+  "numpy>=2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.6",
+  "black>=24.0",
+]
+voice = [
+  "gTTS>=2.5",
+  "pyttsx3>=2.90",
+]
+
+[project.scripts]
+ro-agent = "ro_ai_agent.cli:main"
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
+select = ["E", "F", "I", "B", "UP"]
+
+[tool.pytest.ini_options]
+addopts = "-q"
+pythonpath = ["src"]
