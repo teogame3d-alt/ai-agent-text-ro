@@ -1,11 +1,9 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
 from pathlib import Path
 
-from .config import load_config
-from .memory import fetch_last, init_memory, save_message
-from .pipeline import IntentIndex, load_intents
+from .engine import AgentEngine
+from .memory import fetch_last
 from .tts import speak
 
 
@@ -15,10 +13,7 @@ def main() -> None:
     cfg_path = base / "data" / "config.json"
     memory_db = base / "data" / "memory.db"
 
-    cfg = load_config(cfg_path)
-    intents = load_intents(data_path)
-    index = IntentIndex(intents)
-    init_memory(memory_db)
+    engine = AgentEngine.from_paths(data_path, cfg_path, memory_db)
 
     print("AI Agent Text RO. Type 'exit' to quit.")
     while True:
@@ -26,18 +21,10 @@ def main() -> None:
         if text.lower() in {"exit", "quit"}:
             break
 
-        intent, score = index.match(text)
-        if intent is None or score < cfg.min_similarity:
-            reply = "Nu sunt sigur. Poti reformula?"
-        else:
-            reply = intent.response
-
-        now = datetime.now(timezone.utc).isoformat()
-        save_message(memory_db, "user", text, now)
-        save_message(memory_db, "assistant", reply, now)
+        reply = engine.respond(text)
         print(reply)
 
-        if cfg.enable_voice:
+        if engine.config.enable_voice:
             try:
                 speak(reply)
             except Exception as exc:

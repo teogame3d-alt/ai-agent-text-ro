@@ -21,6 +21,11 @@ python -m venv .venv
 .venv\Scripts\python -m ro_ai_agent
 ```
 
+## UI (PyQt6)
+```bash
+.venv\Scripts\python -m ro_ai_agent.ui_app
+```
+
 ## Optional Voice
 ```bash
 .venv\Scripts\python -m pip install -e .[voice]

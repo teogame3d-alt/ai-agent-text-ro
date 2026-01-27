@@ -6,6 +6,7 @@ readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
   "numpy>=2.0",
+  "PyQt6>=6.7",
 ]
 
 [project.optional-dependencies]
@@ -21,6 +22,7 @@ voice = [
 
 [project.scripts]
 ro-agent = "ro_ai_agent.cli:main"
+ro-agent-ui = "ro_ai_agent.ui_app:main"
 
 [tool.black]
 line-length = 100
