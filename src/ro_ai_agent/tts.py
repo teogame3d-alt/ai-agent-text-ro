@@ -5,6 +5,19 @@ import os
 import time
 
 
+def _find_ro_voice(engine) -> str | None:
+    voices = engine.getProperty("voices")
+    for v in voices:
+        name = (getattr(v, "name", "") or "").lower()
+        langs = getattr(v, "languages", [])
+        lang_text = " ".join(
+            [l.decode("utf-8", "ignore").lower() if isinstance(l, bytes) else str(l).lower() for l in langs]
+        )
+        if "ro" in lang_text or "romanian" in name or "romana" in name:
+            return v.id
+    return None
+
+
 def speak(text: str, output_path: Path | None = None) -> None:
     """Try pyttsx3 for live speech. If not available, use gTTS and play mp3.
 
@@ -14,6 +27,11 @@ def speak(text: str, output_path: Path | None = None) -> None:
         import pyttsx3  # type: ignore
 
         engine = pyttsx3.init()
+        ro_voice = _find_ro_voice(engine)
+        if ro_voice:
+            engine.setProperty("voice", ro_voice)
+        else:
+            raise RuntimeError("No Romanian voice available in pyttsx3")
         engine.say(text)
         engine.runAndWait()
         return
