@@ -11,6 +11,8 @@ suitable for product and QA workflows.
 - Config and data-driven responses
 - SQLite memory (conversation history)
 - FAQ fallback for unknown intents
+- Learning queue (human-in-the-loop)
+- Policy allow/deny rules (safe responses)
 - Optional TTS (Google gTTS online + pyttsx3 offline fallback)
 - Unit tests for intent matching and memory
 
@@ -38,6 +40,11 @@ Then in config, set `enable_voice = true`.
 
 ## FAQ
 `data/faq_ro.json` adds keyword-based fallback answers when no intent matches.
+
+## Learning & Policy
+- Unknown questions are saved to a learning queue in SQLite.
+- You can approve answers in the UI (Teach tab) and the agent learns them.
+- You can add deny keywords to block specific topics.
 
 ## Tests
 ```bash

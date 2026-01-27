@@ -9,6 +9,10 @@ import re
 WORD_RE = re.compile(r"[a-zA-Z0-9_]+", re.ASCII)
 
 
+def tokenize(text: str) -> set[str]:
+    return {t.lower() for t in WORD_RE.findall(text)}
+
+
 @dataclass(frozen=True)
 class FaqEntry:
     keywords: list[str]
@@ -20,7 +24,7 @@ class FaqIndex:
         self.entries = entries
 
     def match(self, text: str) -> str | None:
-        tokens = {t.lower() for t in WORD_RE.findall(text)}
+        tokens = tokenize(text)
         for entry in self.entries:
             if any(k.lower() in tokens for k in entry.keywords):
                 return entry.response
