@@ -10,6 +10,7 @@ suitable for product and QA workflows.
 - Romanian intent matching (bag-of-words + cosine similarity)
 - Config and data-driven responses
 - SQLite memory (conversation history)
+- FAQ fallback for unknown intents
 - Optional TTS (Google gTTS online + pyttsx3 offline fallback)
 - Unit tests for intent matching and memory
 
@@ -34,6 +35,9 @@ Then in config, set `enable_voice = true`.
 
 ## Config
 `data/config.json` controls thresholds and voice behavior.
+
+## FAQ
+`data/faq_ro.json` adds keyword-based fallback answers when no intent matches.
 
 ## Tests
 ```bash

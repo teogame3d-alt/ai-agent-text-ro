@@ -38,7 +38,10 @@ class AgentWindow(QWidget):
 
         top = QHBoxLayout()
         top.addWidget(QLabel("Agent status:"))
-        top.addWidget(QLabel("ready"))
+        self.status_label = QLabel("ready")
+        top.addWidget(self.status_label)
+        self.conf_label = QLabel("confidence: -")
+        top.addWidget(self.conf_label)
         top.addStretch(1)
         top.addWidget(self.voice_checkbox)
 
@@ -58,8 +61,9 @@ class AgentWindow(QWidget):
         self.append_message("Tu", text)
         self.input.clear()
 
-        reply = self.engine.respond(text)
+        reply, score = self.engine.respond(text)
         self.append_message("Agent", reply)
+        self.conf_label.setText(f"confidence: {score:.2f}")
 
         if self.voice_checkbox.isChecked():
             try:

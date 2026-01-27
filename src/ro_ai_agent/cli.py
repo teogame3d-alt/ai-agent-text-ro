@@ -21,8 +21,9 @@ def main() -> None:
         if text.lower() in {"exit", "quit"}:
             break
 
-        reply = engine.respond(text)
+        reply, score = engine.respond(text)
         print(reply)
+        print(f"(confidence: {score:.2f})")
 
         if engine.config.enable_voice:
             try:

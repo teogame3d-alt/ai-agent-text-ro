@@ -1,0 +1,10 @@
+[
+  {
+    "keywords": ["capabilitati", "help", "ajutor", "stii"],
+    "response": "Pot raspunde la intrebari despre program, suport si salutari."
+  },
+  {
+    "keywords": ["contact", "telefon", "email"],
+    "response": "Ne poti contacta la suport@exemplu.ro sau 021-000-000."
+  }
+]
