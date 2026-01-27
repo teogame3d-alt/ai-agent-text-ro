@@ -19,9 +19,8 @@ def _find_ro_voice(engine) -> str | None:
 
 
 def speak(text: str, output_path: Path | None = None) -> None:
-    """Try pyttsx3 for live speech. If not available, use gTTS and play mp3.
-
-    If output_path is provided, gTTS will save an mp3 and open it with default player.
+    """Prefer Romanian TTS. Try pyttsx3 with RO voice, then gTTS. If gTTS fails,
+    fallback to pyttsx3 default voice to avoid silence.
     """
     try:
         import pyttsx3  # type: ignore
@@ -30,11 +29,9 @@ def speak(text: str, output_path: Path | None = None) -> None:
         ro_voice = _find_ro_voice(engine)
         if ro_voice:
             engine.setProperty("voice", ro_voice)
-        else:
-            raise RuntimeError("No Romanian voice available in pyttsx3")
-        engine.say(text)
-        engine.runAndWait()
-        return
+            engine.say(text)
+            engine.runAndWait()
+            return
     except Exception:
         pass
 
@@ -48,8 +45,21 @@ def speak(text: str, output_path: Path | None = None) -> None:
         else:
             mp3_path = Path("tts_output.mp3")
         tts.save(str(mp3_path))
-        os.startfile(str(mp3_path))
-        time.sleep(0.2)
+        try:
+            from playsound import playsound  # type: ignore
+
+            playsound(str(mp3_path))
+        except Exception:
+            os.startfile(str(mp3_path))
+            time.sleep(0.2)
         return
     except Exception:
-        raise RuntimeError("No TTS backend available. Install gTTS or pyttsx3.")
+        try:
+            import pyttsx3  # type: ignore
+
+            engine = pyttsx3.init()
+            engine.say(text)
+            engine.runAndWait()
+            return
+        except Exception:
+            raise RuntimeError("No TTS backend available. Install gTTS or pyttsx3.")
