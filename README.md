@@ -34,6 +34,7 @@ python -m venv .venv
 .venv\Scripts\python -m pip install -e .[voice]
 ```
 Then in config, set `enable_voice = true`.
+If `gTTS` is used, `playsound` (1.2.2) will play audio without opening the mp3 file.
 
 ## Config
 `data/config.json` controls thresholds and voice behavior.

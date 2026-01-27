@@ -18,6 +18,7 @@ dev = [
 voice = [
   "gTTS>=2.5",
   "pyttsx3>=2.90",
+  "playsound==1.2.2",
 ]
 
 [project.scripts]
