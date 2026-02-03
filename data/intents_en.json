@@ -1,0 +1,62 @@
+{
+  "greeting": {
+    "examples": ["hi", "hello", "hey", "good morning", "good evening", "hello you are ai", "hello, are you ai"],
+    "response": "Hi! How can I help you today?"
+  },
+  "small_talk": {
+    "examples": ["how are you", "how are you doing", "are you ok", "how do you feel", "are you good", "you are good", "you good"],
+    "response": "I'm doing fine, thanks. Tell me what you want to solve."
+  },
+  "identity": {
+    "examples": ["what are you", "who are you", "what's your name", "are you an ai", "are you ai", "are you a bot", "are you human", "who am i talking to"],
+    "response": "I'm a deterministic text agent with simple memory and rules."
+  },
+  "origin": {
+    "examples": ["where are you from", "where do you come from", "where do you live", "where are you located", "how are you from"],
+    "response": "I'm a virtual agent, so I don't have a physical location."
+  },
+  "capabilities": {
+    "examples": ["what can you do", "help", "capabilities", "what do you know"],
+    "response": "I can answer intents, explain steps, and guide simple tasks. Tell me your goal."
+  },
+  "math_help": {
+    "examples": ["help me with math", "calculate", "solve 2+2", "math problem"],
+    "response": "Give me the exact expression and I'll solve it step by step."
+  },
+  "vector_help": {
+    "examples": ["vector", "matrix", "dot product", "norm", "vectors"],
+    "response": "Tell me if you need dot product, norm, matrix multiply, etc."
+  },
+  "time_info": {
+    "examples": ["what time is it", "current time", "time now"],
+    "response": "I don't have your local time. Tell me your city and I can guide you."
+  },
+  "weather_info": {
+    "examples": ["weather", "forecast", "how is the weather"],
+    "response": "I don't have live weather. Tell me your city and I'll show how to check."
+  },
+  "program_info": {
+    "examples": ["hours", "schedule", "opening hours", "open time"],
+    "response": "Standard hours: Mon-Fri 09:00-18:00. I can adapt with more details."
+  },
+  "encouragement": {
+    "examples": ["i need encouragement", "i feel down", "this is hard", "i can't do it"],
+    "response": "I get it. Let's take small steps and solve it together."
+  },
+  "discouragement": {
+    "examples": ["i want to quit", "it's pointless", "no point"],
+    "response": "I'm sorry you're feeling this way. We can find one small next step."
+  },
+  "clarify": {
+    "examples": ["i don't understand", "what do you mean", "can you rephrase", "you are change", "that doesn't make sense", "how are you from"],
+    "response": "I didn't understand. Could you rephrase?"
+  },
+  "safety": {
+    "examples": ["is it ok to cheat", "i want to lie", "i want to steal", "how to scam"],
+    "response": "That's not a good idea. I can help with a correct alternative."
+  },
+  "thanks": {
+    "examples": ["thanks", "thank you", "thx"],
+    "response": "You're welcome! Ask me anything else."
+  }
+}

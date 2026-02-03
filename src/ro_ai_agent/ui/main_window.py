@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+"""RO: UI PyQt6 pentru chat si modul de invatare (Teach).
+EN: PyQt6 UI for chat and the Teach workflow.
+"""
+
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
     QCheckBox,
@@ -17,8 +21,10 @@ from PyQt6.QtWidgets import (
 )
 
 from ..engine import AgentEngine
+from ..lang import detect_lang
 from ..memory import (
     add_learned_faq,
+    append_learned_json,
     list_learning_queue,
     mark_learning,
 )
@@ -26,6 +32,9 @@ from ..tts import speak
 
 
 class AgentWindow(QWidget):
+    """RO: Fereastra principala cu tab-uri Chat si Teach.
+    EN: Main window with Chat and Teach tabs.
+    """
     def __init__(self, engine: AgentEngine) -> None:
         super().__init__()
         self.engine = engine
@@ -40,6 +49,9 @@ class AgentWindow(QWidget):
         layout.addWidget(self.tabs)
 
     def on_send(self) -> None:
+        """RO: Trimite mesajul, afiseaza raspunsul si optional TTS.
+        EN: Send message, show reply, and optionally run TTS.
+        """
         text = self.input.text().strip()
         if not text:
             return
@@ -53,13 +65,21 @@ class AgentWindow(QWidget):
         if self.voice_checkbox.isChecked():
             try:
                 speak(reply)
-            except Exception as exc:
-                self.append_message("TTS", f"Eroare: {exc}")
+            except Exception:
+                # RO: TTS ramane silent daca nu exista voce RO.
+                # EN: Keep TTS silent if no Romanian voice is available.
+                pass
 
     def append_message(self, role: str, content: str) -> None:
+        """RO: Adauga o linie in zona de chat.
+        EN: Append a line to the chat area.
+        """
         self.chat.append(f"<b>{role}:</b> {content}")
 
     def _build_chat_tab(self) -> QWidget:
+        """RO: Construieste tab-ul de chat.
+        EN: Build the chat tab UI.
+        """
         tab = QWidget()
 
         self.chat = QTextEdit()
@@ -95,6 +115,9 @@ class AgentWindow(QWidget):
         return tab
 
     def _build_teach_tab(self) -> QWidget:
+        """RO: Construieste tab-ul de invatare manuala.
+        EN: Build the manual learning tab.
+        """
         tab = QWidget()
 
         self.queue_list = QListWidget()
@@ -129,6 +152,9 @@ class AgentWindow(QWidget):
         return tab
 
     def _refresh_queue(self) -> None:
+        """RO: Reincarca lista de intrebari pending.
+        EN: Reload the pending learning queue.
+        """
         self.queue_list.clear()
         for item_id, question, status, created_at in list_learning_queue(self.engine.memory_db):
             if status != "pending":
@@ -138,6 +164,9 @@ class AgentWindow(QWidget):
             self.queue_list.addItem(entry)
 
     def _on_select_queue(self) -> None:
+        """RO: Populeaza zona de raspuns cand se selecteaza o intrebare.
+        EN: Fill the response area when a question is selected.
+        """
         items = self.queue_list.selectedItems()
         if not items:
             return
@@ -146,6 +175,9 @@ class AgentWindow(QWidget):
         self.append_message("Teach", f"Selected: {question} (id={item_id})")
 
     def _approve_selected(self) -> None:
+        """RO: Salveaza raspunsul aprobat si marcheaza itemul ca approved.
+        EN: Save approved response and mark the item approved.
+        """
         items = self.queue_list.selectedItems()
         if not items:
             return
@@ -153,12 +185,18 @@ class AgentWindow(QWidget):
         response = self.response_box.toPlainText().strip()
         if not response:
             return
-        add_learned_faq(self.engine.memory_db, question, response, self._now())
+        created = self._now()
+        add_learned_faq(self.engine.memory_db, question, response, created)
+        lang = detect_lang(question) or "ro"
+        append_learned_json(self.engine.memory_db, question, response, created, lang)
         mark_learning(self.engine.memory_db, item_id, "approved")
         self._refresh_queue()
         self.append_message("Teach", "Approved and learned.")
 
     def _deny_selected(self) -> None:
+        """RO: Adauga un keyword de blocare si marcheaza itemul denied.
+        EN: Add a deny keyword and mark the item denied.
+        """
         items = self.queue_list.selectedItems()
         if not items:
             return
@@ -171,6 +209,9 @@ class AgentWindow(QWidget):
             self.append_message("Teach", f"Denied by policy keyword: {keyword.strip()}")
 
     def _now(self) -> str:
+        """RO: Timestamp UTC pentru consistenta in DB.
+        EN: UTC timestamp for DB consistency.
+        """
         from datetime import datetime, timezone
 
         return datetime.now(timezone.utc).isoformat()

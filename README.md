@@ -35,6 +35,7 @@ python -m venv .venv
 ```
 Then in config, set `enable_voice = true`.
 If `gTTS` is used, `playsound` (1.2.2) will play audio without opening the mp3 file.
+Note: Voice is optional; without `.[voice]`, TTS stays silent.
 
 ## Config
 `data/config.json` controls thresholds and voice behavior.
@@ -60,3 +61,9 @@ See `docs/DECISIONS.md`.
 - Config-driven behavior
 - Persistent memory (SQLite)
 - Tests for matching + storage
+
+## Data
+- \\data/memory.db\\ is created at runtime and is not tracked.
+- Sample config/intents/FAQ live in \\data/\\ and are safe to publish.
+- \\data/learned_faq.json\\ is generated at runtime as a visible learning log.
+

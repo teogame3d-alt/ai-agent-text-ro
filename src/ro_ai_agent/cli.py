@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+"""RO: Entry point CLI pentru agent; util in PyCharm/VS Code run config.
+EN: CLI entry point for the agent; IDE-friendly for quick runs.
+"""
+
 from pathlib import Path
 
 from .engine import AgentEngine
@@ -8,6 +12,9 @@ from .tts import speak
 
 
 def main() -> None:
+    """RO: Ruleaza bucla de chat in terminal.
+    EN: Run a terminal chat loop.
+    """
     base = Path(__file__).resolve().parents[2]
     data_path = base / "data" / "intents_ro.json"
     cfg_path = base / "data" / "config.json"

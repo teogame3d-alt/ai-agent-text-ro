@@ -1,10 +1,66 @@
 {
   "greeting": {
-    "examples": ["salut", "buna", "hey", "salutare"],
+    "examples": ["salut", "buna", "bună", "salutare", "hei", "ceau", "hey"],
     "response": "Salut! Cum te pot ajuta azi?"
   },
+  "small_talk": {
+    "examples": ["ce faci", "ce mai faci", "cum te simti", "cum te simți", "esti bine", "ești bine"],
+    "response": "Sunt bine, multumesc. Spune-mi ce vrei sa rezolvam."
+  },
+  "identity": {
+    "examples": ["cum te cheama", "cine esti", "cine ești", "ce esti", "ce ești"],
+    "response": "Sunt un agent text determinist pentru limba romana, cu memorie si reguli simple."
+  },
+  "origin": {
+    "examples": ["de unde esti", "unde locuiesti", "unde esti", "de unde vii"],
+    "response": "Sunt un agent virtual, deci nu am o locatie fizica."
+  },
+  "capabilities": {
+    "examples": ["ce stii", "ce poti", "capabilitati", "ajutor", "help"],
+    "response": "Pot raspunde la intenturi, oferi explicatii simple si ghida pas cu pas. Spune-mi problema."
+  },
+  "math_help": {
+    "examples": ["ajuta-ma cu un calcul", "rezolva un calcul", "calc", "calculeaza", "2+2", "4*5"],
+    "response": "Spune expresia matematica exacta si o rezolv pas cu pas."
+  },
+  "vector_help": {
+    "examples": ["vector", "matrice", "produs scalar", "norma", "vectori"],
+    "response": "Spune ce ai nevoie: produs scalar, norma, inmultire matrice etc."
+  },
+  "time_info": {
+    "examples": ["cat e ceasul", "ora curenta", "ora este", "ce ora e"],
+    "response": "Nu am acces la ceasul tau local. Spune-mi orasul si iti arat cum gasesti ora exacta."
+  },
+  "weather_info": {
+    "examples": ["vremea", "meteo", "cum e vremea", "prognoza"],
+    "response": "Nu am acces la vreme live. Daca imi spui orasul, iti spun cum verifici rapid."
+  },
+  "program_info": {
+    "examples": ["program", "orar", "cand sunteti deschisi", "cand sunteti deschisi", "interval"],
+    "response": "Program standard: Luni-Vineri 09:00-18:00. Pot adapta daca imi dai detalii."
+  },
+  "encouragement": {
+    "examples": ["am nevoie de incurajare", "sunt descurajat", "nu mai pot", "nu-mi iese"],
+    "response": "Te inteleg. Hai sa luam pe pasi mici si sa rezolvam impreuna."
+  },
+  "discouragement": {
+    "examples": ["vreau sa renunt", "nu merita", "nu are rost"],
+    "response": "Imi pare rau ca treci prin asta. Daca vrei, putem discuta si gasi un pas mic."
+  },
+  "clarify": {
+    "examples": ["nu inteleg", "nu am inteles", "poti reformula", "poti explica", "nu are sens"],
+    "response": "Nu am inteles bine. Poti reformula?"
+  },
+  "safety": {
+    "examples": ["e bine sa trișez", "vreau sa mint", "vreau sa fur", "vrei sa pacalesc"],
+    "response": "Nu e bine sa faci asta. Pot sa te ajut cu o alternativa corecta."
+  },
+  "thanks": {
+    "examples": ["multumesc", "mulțumesc", "ms", "mersi"],
+    "response": "Cu placere! Daca mai ai nevoie de ceva, spune-mi."
+  },
   "hours": {
-    "examples": ["program", "orar", "cand sunteti deschisi"],
+    "examples": ["program firma", "orar firma", "cand sunteti deschisi firma"],
     "response": "Programul nostru este 09:00 - 18:00, Luni-Vineri."
   },
   "support": {
