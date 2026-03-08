@@ -56,7 +56,7 @@ python -m venv .venv
 Then in config, set `enable_voice = true`.
 If `gTTS` is used, `playsound` (1.2.2) will play audio without opening the mp3 file.
 
-## Demo (Employer)
+## Demo Flow
 1. Run the CLI and ask a known intent question in Romanian.
 2. Ask an unknown question and see the learning queue update.
 3. Open the UI and review the Teach tab to approve a learned response.
@@ -84,4 +84,5 @@ See `docs/DECISIONS.md`.
 - `data/memory.db` is created at runtime and is not tracked.
 - Sample config/intents/FAQ live in `data/` and are safe to publish.
 - `data/learned_faq.json` is generated at runtime as a visible learning log.
+
 
