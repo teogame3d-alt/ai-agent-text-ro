@@ -5,7 +5,7 @@ This is intentionally not an LLM; behavior is explainable and reproducible by de
 
 [![CI](https://github.com/teogame3d-alt/ai-agent-text-ro/actions/workflows/ci.yml/badge.svg)](https://github.com/teogame3d-alt/ai-agent-text-ro/actions/workflows/ci.yml)
 
-![Flow](docs/images/agent_flow.png)
+![App Screenshot](docs/images/screenshotapp.png)
 
 ## Problem
 Teams often need predictable text automation for QA and product workflows without black-box behavior.
@@ -84,3 +84,4 @@ See `docs/DECISIONS.md`.
 - `data/memory.db` is created at runtime and is not tracked.
 - Sample config/intents/FAQ live in `data/` and are safe to publish.
 - `data/learned_faq.json` is generated at runtime as a visible learning log.
+
