@@ -86,3 +86,7 @@ See `docs/DECISIONS.md`.
 - `data/learned_faq.json` is generated at runtime as a visible learning log.
 
 
+
+## Mentor Notes
+See docs/MENTOR_NOTES.md for design rationale, tradeoffs, and implementation decisions.
+
