@@ -1,17 +1,16 @@
-from __future__ import annotations
-
 """RO: Pipeline determinist pentru matching intent-uri (BoW + cosine).
 EN: Deterministic intent matching pipeline (BoW + cosine similarity).
 """
 
+from __future__ import annotations
+
 import json
 import re
+from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
-from typing import Iterable
 
 import numpy as np
-
 
 WORD_RE = re.compile(r"[a-zA-Z0-9_]+", re.ASCII)
 

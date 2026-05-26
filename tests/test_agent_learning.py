@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from ro_ai_agent.engine import AgentEngine
@@ -29,7 +29,7 @@ def test_agent_learns_user_approved_answer(tmp_path: Path) -> None:
         memory_db,
         unknown_question,
         approved_answer,
-        datetime.now(timezone.utc).isoformat(),
+        datetime.now(UTC).isoformat(),
     )
 
     second_reply, _score = engine.respond("nimbus pentru stilul meu")

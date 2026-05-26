@@ -1,16 +1,15 @@
-from __future__ import annotations
-
 """RO: TTS cu fallback-uri (pyttsx3 -> gTTS -> pyttsx3 default).
 EN: TTS with fallbacks (pyttsx3 -> gTTS -> pyttsx3 default).
 """
 
-from pathlib import Path
+from __future__ import annotations
+
 import os
 import tempfile
 import time
+from pathlib import Path
 
 from .lang import detect_lang
-
 
 _ENGINE = None
 _RO_VOICE_ID: str | None = None
@@ -26,7 +25,12 @@ def _find_ro_voice(engine) -> str | None:
         name = (getattr(v, "name", "") or "").lower()
         langs = getattr(v, "languages", [])
         lang_text = " ".join(
-            [l.decode("utf-8", "ignore").lower() if isinstance(l, bytes) else str(l).lower() for l in langs]
+            [
+                lang.decode("utf-8", "ignore").lower()
+                if isinstance(lang, bytes)
+                else str(lang).lower()
+                for lang in langs
+            ]
         )
         if "ro" in lang_text or "romanian" in name or "romana" in name:
             return v.id
@@ -39,7 +43,12 @@ def _find_en_voice(engine) -> str | None:
         name = (getattr(v, "name", "") or "").lower()
         langs = getattr(v, "languages", [])
         lang_text = " ".join(
-            [l.decode("utf-8", "ignore").lower() if isinstance(l, bytes) else str(l).lower() for l in langs]
+            [
+                lang.decode("utf-8", "ignore").lower()
+                if isinstance(lang, bytes)
+                else str(lang).lower()
+                for lang in langs
+            ]
         )
         if "en" in lang_text or "english" in name:
             return v.id

@@ -1,8 +1,8 @@
-from __future__ import annotations
-
 """RO: Detectare simpla de limba pentru routing RO/EN.
 EN: Simple language detection for RO/EN routing.
 """
+
+from __future__ import annotations
 
 
 def detect_lang(text: str) -> str | None:

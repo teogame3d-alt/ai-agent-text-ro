@@ -1,8 +1,8 @@
-from __future__ import annotations
-
 """RO: Entry point pentru UI PyQt6 (usor de rulat din IDE).
 EN: PyQt6 UI entry point (easy to run from IDE).
 """
+
+from __future__ import annotations
 
 from pathlib import Path
 

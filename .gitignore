@@ -15,11 +15,13 @@ dist/
 
 # Testing
 .pytest_cache/
+.pytest_tmp/
 .coverage
 htmlcov/
 
 # Editors / OS
 .vscode/
+.idea/
 .DS_Store
 
 # Local data / artifacts

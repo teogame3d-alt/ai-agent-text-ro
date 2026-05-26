@@ -1,8 +1,8 @@
-from __future__ import annotations
-
 """RO: Entry point CLI pentru agent; util in PyCharm/VS Code run config.
 EN: CLI entry point for the agent; IDE-friendly for quick runs.
 """
+
+from __future__ import annotations
 
 from pathlib import Path
 

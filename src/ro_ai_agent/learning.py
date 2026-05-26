@@ -1,11 +1,11 @@
-from __future__ import annotations
-
 """RO: Matching simplu pentru raspunsuri invatate manual.
 EN: Simple matching for human-learned answers.
 """
 
+from __future__ import annotations
+
+from collections.abc import Iterable
 from dataclasses import dataclass
-from typing import Iterable
 
 from .faq import tokenize
 

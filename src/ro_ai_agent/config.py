@@ -1,12 +1,12 @@
-from __future__ import annotations
-
 """RO: Configuratie simpla pentru praguri si optiuni runtime.
 EN: Small config for thresholds and runtime options.
 """
 
+from __future__ import annotations
+
+import json
 from dataclasses import dataclass
 from pathlib import Path
-import json
 
 
 @dataclass(frozen=True)

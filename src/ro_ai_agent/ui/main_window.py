@@ -1,8 +1,10 @@
-from __future__ import annotations
-
 """RO: UI PyQt6 pentru chat si modul de invatare (Teach).
 EN: PyQt6 UI for chat and the Teach workflow.
 """
+
+from __future__ import annotations
+
+from datetime import UTC
 
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (
@@ -10,6 +12,7 @@ from PyQt6.QtWidgets import (
     QFrame,
     QGridLayout,
     QHBoxLayout,
+    QInputDialog,
     QLabel,
     QLineEdit,
     QListWidget,
@@ -19,7 +22,6 @@ from PyQt6.QtWidgets import (
     QTextEdit,
     QVBoxLayout,
     QWidget,
-    QInputDialog,
 )
 
 from ..engine import AgentEngine
@@ -214,7 +216,8 @@ class AgentWindow(QWidget):
         title = QLabel("AI Agent Text RO Studio")
         title.setObjectName("heroTitle")
         subtitle = QLabel(
-            "RO/EN intent matching, FAQ fallback, policy rules, human-in-the-loop learning, and SQLite memory."
+            "RO/EN intent matching, FAQ fallback, policy rules, "
+            "human-in-the-loop learning, and SQLite memory."
         )
         subtitle.setObjectName("heroSubtitle")
 
@@ -368,6 +371,6 @@ class AgentWindow(QWidget):
         """RO: Timestamp UTC pentru consistenta in DB.
         EN: UTC timestamp for DB consistency.
         """
-        from datetime import datetime, timezone
+        from datetime import datetime
 
-        return datetime.now(timezone.utc).isoformat()
+        return datetime.now(UTC).isoformat()

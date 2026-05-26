@@ -1,12 +1,12 @@
-from __future__ import annotations
-
 """RO: Persistenta SQLite pentru mesaje, invatare si reguli de politica.
 EN: SQLite persistence for messages, learning queue, and policy rules.
 """
 
+from __future__ import annotations
+
+import json
 import sqlite3
 from pathlib import Path
-import json
 
 SCHEMA = """
 CREATE TABLE IF NOT EXISTS messages (
@@ -116,7 +116,13 @@ def add_learned_faq(db_path: Path, question: str, response: str, created_at: str
         conn.commit()
 
 
-def append_learned_json(db_path: Path, question: str, response: str, created_at: str, lang: str) -> None:
+def append_learned_json(
+    db_path: Path,
+    question: str,
+    response: str,
+    created_at: str,
+    lang: str,
+) -> None:
     """RO: Pastreaza o urma vizibila in JSON (audit pentru invatare).
     EN: Keep a visible JSON audit trail for learned items.
     """

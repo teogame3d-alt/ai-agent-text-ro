@@ -1,14 +1,13 @@
-from __future__ import annotations
-
 """RO: Index minimal pentru FAQ, bazat pe tokeni si cuvinte-cheie.
 EN: Minimal FAQ index based on token matching and keywords.
 """
 
-from dataclasses import dataclass
-from pathlib import Path
+from __future__ import annotations
+
 import json
 import re
-
+from dataclasses import dataclass
+from pathlib import Path
 
 WORD_RE = re.compile(r"[a-zA-Z0-9_]+", re.ASCII)
 

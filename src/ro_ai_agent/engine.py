@@ -1,15 +1,17 @@
-from __future__ import annotations
-
 """RO: Motorul principal al agentului text; combina intenturi, reguli si memorie.
 EN: Core text-agent engine; ties intents, policy rules, and persistence together.
 """
 
+from __future__ import annotations
+
 from dataclasses import dataclass
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from .config import AgentConfig, load_config
+from .faq import FaqIndex, load_faq, tokenize
 from .lang import detect_lang
+from .learning import LearnedEntry, LearnedIndex
 from .memory import (
     add_policy_rule,
     enqueue_learning,
@@ -19,8 +21,6 @@ from .memory import (
     save_message,
 )
 from .pipeline import IntentIndex, load_intents
-from .faq import FaqIndex, load_faq, tokenize
-from .learning import LearnedEntry, LearnedIndex
 
 
 @dataclass
@@ -36,7 +36,7 @@ class AgentEngine:
     faq_en: FaqIndex
 
     @classmethod
-    def from_paths(cls, intents_path: Path, config_path: Path, memory_db: Path) -> "AgentEngine":
+    def from_paths(cls, intents_path: Path, config_path: Path, memory_db: Path) -> AgentEngine:
         """RO: Incarca configuratia, intenturile si initializeaza baza de date.
         EN: Load config/intents and ensure the database is ready.
         """
@@ -91,7 +91,8 @@ class AgentEngine:
         EN: Fallback path: capabilities -> learned -> FAQ -> queue.
         """
         text_l = text.lower()
-        if any(k in text_l for k in ["ajutor", "help", "ce stii", "capabilitati", "ce poti", "help me"]):
+        help_terms = ["ajutor", "help", "ce stii", "capabilitati", "ce poti", "help me"]
+        if any(k in text_l for k in help_terms):
             return self._capabilities()
         learned = self._learned_match(text)
         if learned:
@@ -99,7 +100,7 @@ class AgentEngine:
         faq_reply = self.faq_en.match(text) if lang == "en" else self.faq.match(text)
         if faq_reply:
             return faq_reply
-        enqueue_learning(self.memory_db, text, datetime.now(timezone.utc).isoformat())
+        enqueue_learning(self.memory_db, text, datetime.now(UTC).isoformat())
         return "Nu sunt sigur. Poti reformula?"
 
     def _capabilities(self) -> str:
@@ -119,7 +120,7 @@ class AgentEngine:
         """RO: Pastreaza dialogul in SQLite cu timestamp UTC.
         EN: Persist the dialog to SQLite with UTC timestamps.
         """
-        now = datetime.now(timezone.utc).isoformat()
+        now = datetime.now(UTC).isoformat()
         save_message(self.memory_db, "user", text, now)
         save_message(self.memory_db, "assistant", reply, now)
 

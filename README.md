@@ -34,6 +34,17 @@ Python, NumPy, SQLite, PyQt6, langdetect, pytest, GitHub Actions.
 - Traceable decisions through thresholds and policy gates
 - Production-style structure (`src/`, `tests/`, `docs/`, CI)
 
+## Proof of Work
+- The learning queue, approved answers, policy rules, and memory behavior are testable without external services.
+- SQLite stores conversation memory locally while generated runtime data stays out of Git.
+- The UI exposes confidence and pipeline state so behavior can be reviewed instead of guessed.
+- Docs explain decisions behind deterministic matching, learned answers, and policy gates.
+
+## Difficult Parts / Tradeoffs
+- A deterministic agent is less flexible than a hosted LLM, but it is easier to inspect, test, and control.
+- User-approved learning avoids uncontrolled self-updates, which is safer for a portfolio agent.
+- Romanian/English behavior is handled in a practical way for the current scope rather than claiming broad language coverage.
+
 ## Features
 - Romanian intent matching (bag-of-words + cosine similarity)
 - Config and data-driven responses
