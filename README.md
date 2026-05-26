@@ -98,6 +98,6 @@ See `docs/DECISIONS.md`.
 
 
 
-## Mentor Notes
-See docs/MENTOR_NOTES.md for design rationale, tradeoffs, and implementation decisions.
+## Engineering Notes
+See docs/ENGINEERING_NOTES.md for design rationale, tradeoffs, and implementation decisions.
 

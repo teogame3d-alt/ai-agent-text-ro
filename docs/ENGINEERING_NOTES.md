@@ -1,4 +1,4 @@
-# Mentor Notes
+# Engineering Notes
 
 ## Why this project exists
 I wanted to show a personal AI Agent that can learn from the user while staying understandable: unknown questions go into a learning queue, approved answers become reusable knowledge, and policy rules shape behavior.
@@ -11,7 +11,7 @@ I wanted to show a personal AI Agent that can learn from the user while staying 
 
 ## Build vs polish
 - Build phase: engine, memory, pipeline, UI, tests, CI.
-- Polish phase: screenshot updates, README restructuring, recruiter-focused flow.
+- Polish phase: screenshot updates, README restructuring, and a clearer review path.
 
 ## What I learned
 - Agent behavior needs both learning and boundaries.
