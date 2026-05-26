@@ -1,0 +1,58 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual env
+.venv/
+venv/
+ENV/
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Editors / OS
+.vscode/
+.DS_Store
+
+# Local data / artifacts
+*.db
+*.sqlite
+*.sqlite3
+*.mp3
+data/learned_faq.json
+
+# Tooling caches
+.ruff_cache/
+.mypy_cache/
+
+# Privacy guardrails / local-only files
+.env
+.env.*
+!.env.example
+*.local
+*.secret
+*.secrets
+secrets/
+private/
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.csr
+*.log
+*.tmp
+*.bak
+data/memory.db
+local_artifacts/
+private_artifacts/
+Thumbs.db
+desktop.ini

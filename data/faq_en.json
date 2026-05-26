@@ -1,0 +1,18 @@
+[
+  {
+    "keywords": ["capabilities", "help", "support", "know"],
+    "response": "I can answer basic questions about hours, support, and greetings."
+  },
+  {
+    "keywords": ["contact", "phone", "email"],
+    "response": "You can reach us at support@example.com or +40-21-000-000."
+  },
+  {
+    "keywords": ["hours", "schedule"],
+    "response": "Standard hours: Mon-Fri 09:00-18:00."
+  },
+  {
+    "keywords": ["delivery", "shipping"],
+    "response": "Delivery usually takes 2-5 business days."
+  }
+]
