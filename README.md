@@ -10,6 +10,12 @@ The current implementation uses a deterministic, config-driven text pipeline so 
 The PyQt6 UI has been refreshed as a small studio view: quick prompts, confidence display,
 pipeline summary cards, and a Teach tab for human-in-the-loop learning.
 
+## Current status
+
+Working local MVP with deterministic behaviour, SQLite memory, PyQt6 UI, tests, and CI. The next
+technical step is to evaluate optional hosted-model explanations without weakening the transparent
+fallback path. See [the changelog](CHANGELOG.md).
+
 ## Problem
 Personal assistants and support bots should be useful without becoming impossible to inspect or control.
 The goal is an agent that can be taught by the user, remember approved knowledge, and follow explicit behavior rules.
@@ -42,7 +48,7 @@ Python, NumPy, SQLite, PyQt6, langdetect, pytest, GitHub Actions.
 
 ## Difficult Parts / Tradeoffs
 - A deterministic agent is less flexible than a hosted LLM, but it is easier to inspect, test, and control.
-- User-approved learning avoids uncontrolled self-updates, which is safer for a portfolio agent.
+- User-approved learning avoids uncontrolled self-updates and keeps the adaptation path auditable.
 - Romanian/English behavior is handled in a practical way for the current scope rather than claiming broad language coverage.
 
 ## Features
